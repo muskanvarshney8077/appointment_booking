@@ -1,9 +1,10 @@
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 
 function NavBar() {
+  const navigate = useNavigate();
   return (
     <>
       <Navbar
@@ -12,7 +13,13 @@ function NavBar() {
         // className="bg-body-tertiary varaint-success"
       >
         <Container>
-          <Navbar.Brand>Appointment Booking</Navbar.Brand>
+          <Navbar.Brand
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            Appointment Booking
+          </Navbar.Brand>
         </Container>
       </Navbar>
     </>
