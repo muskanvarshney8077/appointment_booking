@@ -18,7 +18,7 @@ const BookPage = ({
   setStorage,
 }) => {
   const arr = ["Headache", "Stomach Ache", "Fatigue", "Loose Motion"];
-  console.log(storage);
+  // console.log(storage);
   const navigate = useNavigate();
 
   const handleClick = (e) => {
@@ -76,8 +76,8 @@ const BookPage = ({
             }}
           >
             <option>Select any</option>
-            {arr.map((ele) => (
-              <option>{ele}</option>
+            {arr.map((ele, index) => (
+              <option key={index}>{ele}</option>
             ))}
           </Form.Select>
         </Form.Group>

@@ -3,12 +3,12 @@ import Table from "react-bootstrap/Table";
 import "./CheckBooking.css";
 import Button from "react-bootstrap/Button";
 import Edit from "../Edit/Edit";
-const CheckBooking = ({ storage }) => {
+const CheckBooking = ({ storage, setStorage, name, setName }) => {
   const table_heading = ["Name", "Age", "Disease", "Time", "Action"];
-  const handleEdit = () => {};
+
   const handleDelete = (index) => {
-    storage.filter((ele) => ele.id !== index);
-    console.log(storage);
+    const new_arr = storage.filter((ele) => ele.id !== index);
+    setStorage(new_arr);
   };
   return (
     <div className="tableStyle">
@@ -24,15 +24,22 @@ const CheckBooking = ({ storage }) => {
         <tbody>
           {storage.map((ele, index) => (
             <tr key={index} className="tdStyles">
-              <td>{ele.id}</td>
+              <td>{index + 1}</td>
               <td>{ele.name}</td>
               <td>{ele.age}</td>
               <td>{ele.disease}</td>
               <td>{ele.time}</td>
               <td>
-                <Edit />
+                <Edit
+                  storage={storage}
+                  setStorage={setStorage}
+                  name={name}
+                  setName={setName}
+                  id={ele.id}
+                />
 
                 <Button
+                  className="mx-3"
                   variant="success"
                   onClick={() => {
                     handleDelete(ele.id);

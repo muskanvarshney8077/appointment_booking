@@ -36,7 +36,17 @@ function App() {
               />
             }
           />
-          <Route path="/check" element={<CheckBooking storage={storage} />} />
+          <Route
+            path="/check"
+            element={
+              <CheckBooking
+                storage={storage}
+                setStorage={setStorage}
+                name={name}
+                setName={setName}
+              />
+            }
+          />
         </Routes>
       </div>
     </BrowserRouter>
