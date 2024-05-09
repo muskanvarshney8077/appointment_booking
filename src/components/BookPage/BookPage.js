@@ -23,21 +23,25 @@ const BookPage = ({
 
   const handleClick = (e) => {
     e.preventDefault();
-    setStorage([
-      ...storage,
-      {
-        id: storage.length ? storage[storage.length - 1].id + 1 : 1,
-        name: _.startCase(_.toLower(name)),
-        age: age,
-        disease: disease,
-        time: time,
-      },
-    ]);
-    setName("");
-    setAge("");
-    setTime("");
-    setDisease("");
-    navigate("/");
+    if (name === "" || disease === "" || age === "" || time === "") {
+      alert("Please fill the required fields");
+    } else {
+      setStorage([
+        ...storage,
+        {
+          id: storage.length ? storage[storage.length - 1].id + 1 : 1,
+          name: _.startCase(_.toLower(name)),
+          age: age,
+          disease: disease,
+          time: time,
+        },
+      ]);
+      setName("");
+      setAge("");
+      setTime("");
+      setDisease("");
+      navigate("/");
+    }
   };
 
   return (
@@ -52,6 +56,7 @@ const BookPage = ({
             onChange={(e) => {
               setName(e.target.value);
             }}
+            required
           />
         </Form.Group>
 
@@ -64,6 +69,7 @@ const BookPage = ({
             onChange={(e) => {
               setAge(e.target.value);
             }}
+            required
           />
         </Form.Group>
         <Form.Group className="mb-1">
@@ -74,6 +80,7 @@ const BookPage = ({
             onChange={(e) => {
               setDisease(e.target.value);
             }}
+            required
           >
             <option>Select any</option>
             {arr.map((ele, index) => (
@@ -90,6 +97,7 @@ const BookPage = ({
             onChange={(e) => {
               setTime(e.target.value);
             }}
+            required
           />
         </Form.Group>
         <Button
